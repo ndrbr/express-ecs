@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: "ap-southeast-1"
-  IMAGE_NAME: shrempf/express-ecs
+  DOCKER_IMAGE: shrempf/express-ecs
 
 permissions:
   id-token: write
@@ -32,7 +32,7 @@ jobs:
 
       - name: Get Test tag
         run: |
-          echo "TEST_TAG=${{ env.IMAGE_NAME }}:test" >> $GITHUB_ENV
+          echo "TEST_TAG=${{ env.DOCKER_IMAGE }}:test" >> $GITHUB_ENV
 
       - name: Build
         uses: docker/build-push-action@v4
@@ -55,11 +55,11 @@ jobs:
 
       - name: Get Hash tag
         run: |
-          echo "HASH_TAG=${{ env.IMAGE_NAME }}:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
+          echo "HASH_TAG=${{ env.DOCKER_IMAGE }}:${{ env.SHORT_SHA }}" >> $GITHUB_ENV
 
       - name: Get Latest tag
         run: |
-          echo "LATEST_TAG=${{ env.IMAGE_NAME }}:latest" >> $GITHUB_ENV
+          echo "LATEST_TAG=${{ env.DOCKER_IMAGE }}:latest" >> $GITHUB_ENV
 
       - name: Publish
         uses: docker/build-push-action@v4
