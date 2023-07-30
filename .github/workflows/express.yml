@@ -74,6 +74,9 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Generate Dockerrun file with hash tag
+        run: jq --arg value "${{ env.HASH_TAG }}" '.containerDefinitions[0].image = $value' Dockerrun.aws.json > tmpfile && mv tmpfile Dockerrun.aws.json
+
       - name: Generate deployment package
         run: zip -r deploy.zip "Dockerrun.aws.json" ".ebextensions"
 
