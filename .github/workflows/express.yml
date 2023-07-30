@@ -59,7 +59,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: [${{ env.LATEST_TAG }}, ${{ env.HASH_TAG }}]
+          tags: ${{ env.LATEST_TAG }}, ${{ env.HASH_TAG }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2.2.0
