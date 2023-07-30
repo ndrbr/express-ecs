@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "express-app",
-      "image": "shrempf/express-docker:latest",
+      "image": "shrempf/express-ecs:latest",
       "essential": true,
       "memory": 128,
       "portMappings": [
