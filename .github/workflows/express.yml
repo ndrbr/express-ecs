@@ -84,6 +84,6 @@ jobs:
           application_name: express-ecs
           environment_name: express-ecs-dev
           version_label: ${{ env.VER_LABEL }}
-          version_description: ${{ GITHUB_SHA }}
+          version_description: ${{ GITHUB.SHA }}
           region: ${{ env.AWS_REGION }}
           deployment_package: deploy.zip
